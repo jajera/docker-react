@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jajera/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jajera/docker-react npm run test
